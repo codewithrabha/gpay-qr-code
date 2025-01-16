@@ -7,7 +7,7 @@ const Qrcode = ({name, upiId, qrSource}) => {
       <h3 className='bg-slate-100 w-[100%] text-xl font-medium uppercase py-2 text-center font-sans'>{name ? name : 'Abhijit Rabha'}</h3>
       <img className='w-[255px]' src={qrSource ? qrSource : '/images/donateQrcode.png'} />
       <div className='upi-id-wrapper flex '>
-        <img className='w-[40px]' src='./images/Gpay.svg' alt="Google-Pay" />
+        <img className='w-[40px]' src='/images/Gpay.svg' alt="Google-Pay" />
         <span className='text-gray-500 ml-2 font-semibold font-sans'>{upiId ? upiId : 'mr.abhijitrabha@oksbi'}</span>
       </div>
     </div>
