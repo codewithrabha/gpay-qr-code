@@ -1,0 +1,109 @@
+'use client';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import Qrcode from './Qrcode';
+
+const Upiform = () => {
+  const { register, handleSubmit, watch, formState: { errors, isSubmitting } } = useForm();
+  const [qrCodeUrl, setQrCodeUrl] = useState(null);
+
+  const onSubmit = async (data) => {
+    setQrCodeUrl(null); // Reset the QR code URL before generating a new one
+
+    try {
+      const response = await fetch('/api/qr', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          pa: data.receiverUpiId,
+          pn: data.receiverName,
+          am: data.transactionAmount,
+          cu: 'INR', // Assuming currency is fixed as INR
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Something went wrong!');
+      }
+
+      const result = await response.json();
+      setQrCodeUrl(result.apiUrl); // Store the QR code URL to display it
+    } catch (err) {
+      console.error('Error generating QR code:', err.message);
+    }
+  };
+
+  const name = watch('receiverName');
+  const upiId = watch('receiverUpiId');
+
+  return (
+    <div className='form-qr-wrapper flex w-[50%] items-center justify-between'>
+      <form onSubmit={handleSubmit(onSubmit)} className='p-5 w-[350px] bg-white rounded flex flex-col gap-y-3 shadow-md'>
+        <div className='input-block flex flex-col'>
+          <label className='text-m mb-2' htmlFor="receiver-name">Your Name</label>
+          <input
+            className='border py-1.5 px-2 rounded shadow-sm outline-blue-600'
+            type="text"
+            id="receiver-name"
+            placeholder='Your / Business Name...'
+            {...register('receiverName', { required: 'Name is required' })}
+          />
+          {errors.receiverName && <span className="text-red-500">{errors.receiverName.message}</span>}
+        </div>
+
+        <div className='input-block flex flex-col'>
+          <label className='text-m mb-2' htmlFor="receiver-upi-app">UPI App</label>
+          <select
+            className='border py-2 px-2 rounded shadow-sm text-blue-600 outline-blue-600'
+            id="receiver-upi-app"
+            {...register('receiverUpiApp', { required: true })}
+          >
+            <option value="google-pay">Google-Pay</option>
+          </select>
+        </div>
+
+        <div className='input-block flex flex-col'>
+          <label className='text-m mb-2' htmlFor="receiver-upi-id">UPI ID</label>
+          <input
+            className='upi-id border py-1.5 px-2 rounded shadow-sm outline-blue-600'
+            type="text"
+            id="receiver-upi-id"
+            placeholder='Your UPI address..'
+            {...register('receiverUpiId', { required: 'UPI ID is required' })}
+          />
+          {errors.receiverUpiId && <span className="text-red-500">{errors.receiverUpiId.message}</span>}
+        </div>
+
+        <div className='input-block flex flex-col'>
+          <label className='text-m mb-2' htmlFor="transaction-amount">Amount</label>
+          <input
+            className='amount border py-1.5 px-2 rounded shadow-sm outline-blue-600'
+            type="number"
+            id="transaction-amount"
+            placeholder='Set your amount...'
+            {...register('transactionAmount', {
+              required: 'Amount is required',
+              valueAsNumber: true,
+              validate: (value) => value > 0 || 'Amount must be greater than 0',
+            })}
+          />
+          {errors.transactionAmount && <span className="text-red-500">{errors.transactionAmount.message}</span>}
+        </div>
+
+        <button
+          type="submit"
+          className='bg-[#3A81F1] mt-3 text-white p-2 rounded'
+          disabled={isSubmitting} // Disable the button when form is submitting
+        >
+          {isSubmitting ? 'Generating...' : 'Generate QR'}
+        </button>
+      </form>
+      <Qrcode name={name} upiId={upiId} qrSource={qrCodeUrl} />
+    </div>
+  );
+};
+
+export default Upiform;
