@@ -2,6 +2,7 @@
 import Upiform from "@/components/Upiform";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import 'material-symbols';
 
 
 export default function Home() {
