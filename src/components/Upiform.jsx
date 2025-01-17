@@ -40,7 +40,7 @@ const Upiform = () => {
   const upiId = watch('receiverUpiId');
 
   return (
-    <div className='form-qr-wrapper flex w-[50%] items-center justify-between'>
+    <div className='form-qr-wrapper flex flex-col-reverse sm:flex-row gap-y-5 w-[50%] items-center justify-between'>
       <form onSubmit={handleSubmit(onSubmit)} className='p-5 w-[350px] bg-white rounded flex flex-col gap-y-3 shadow-md'>
         <div className='input-block flex flex-col'>
           <label className='text-m mb-2' htmlFor="receiver-name">Your Name</label>
@@ -95,10 +95,13 @@ const Upiform = () => {
 
         <button
           type="submit"
-          className='bg-[#3A81F1] mt-3 text-white p-2 rounded'
+          className='bg-[#3A81F1] mt-3 font-sans font-[500] text-white p-2 rounded flex justify-center items-center gap-x-2'
           disabled={isSubmitting} // Disable the button when form is submitting
         >
           {isSubmitting ? 'Generating...' : 'Generate QR'}
+          <span className="material-symbols-outlined text-white">
+            qr_code_2
+          </span>
         </button>
       </form>
       <Qrcode name={name} upiId={upiId} qrSource={qrCodeUrl} />
