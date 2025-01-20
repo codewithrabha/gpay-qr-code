@@ -1,4 +1,4 @@
-# Google Pay QR Code Generator
+# Google Pay QR Code Generator [NextJs v15]
 
 A simple and efficient tool to generate Google Pay (GPay) QR codes for easy payment processing.
 
