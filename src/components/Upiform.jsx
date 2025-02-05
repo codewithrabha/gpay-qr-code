@@ -46,11 +46,11 @@ const Upiform = () => {
 
   return (
     <div className='form-qr-wrapper flex flex-col-reverse sm:flex-row gap-y-5 w-[50%] items-center justify-between'>
-      <form onSubmit={handleSubmit(onSubmit)} className='p-5 w-[350px] bg-white rounded flex flex-col gap-y-3 shadow-md display-none'>
+      <form onSubmit={handleSubmit(onSubmit)} className='p-5 w-[350px] bg-white rounded-sm flex flex-col gap-y-3 shadow-md'>
         <div className='input-block flex flex-col'>
           <label className='text-m mb-2' htmlFor="receiver-name">Your Name</label>
           <input
-            className='border py-1.5 px-2 rounded shadow-sm outline-blue-600'
+            className='border py-1.5 px-2 rounded-sm shadow-xs outline-blue-600'
             type="text"
             id="receiver-name"
             placeholder='Your / Business Name...'
@@ -62,7 +62,7 @@ const Upiform = () => {
         <div className='input-block flex flex-col'>
           <label className='text-m mb-2' htmlFor="receiver-upi-app">UPI App</label>
           <select
-            className='border py-2 px-2 rounded shadow-sm text-blue-600 outline-blue-600'
+            className='border py-2 px-2 rounded-sm shadow-xs text-blue-600 outline-blue-600'
             id="receiver-upi-app"
             {...register('receiverUpiApp', { required: true })}
           >
@@ -73,7 +73,7 @@ const Upiform = () => {
         <div className='input-block flex flex-col'>
           <label className='text-m mb-2' htmlFor="receiver-upi-id">UPI ID</label>
           <input
-            className='upi-id border py-1.5 px-2 rounded shadow-sm outline-blue-600'
+            className='upi-id border py-1.5 px-2 rounded-sm shadow-xs outline-blue-600'
             type="text"
             id="receiver-upi-id"
             placeholder='Your UPI address..'
@@ -85,7 +85,7 @@ const Upiform = () => {
         <div className='input-block flex flex-col'>
           <label className='text-m mb-2' htmlFor="transaction-amount">Amount</label>
           <input
-            className='amount border py-1.5 px-2 rounded shadow-sm outline-blue-600'
+            className='amount border py-1.5 px-2 rounded-sm shadow-xs outline-blue-600'
             type="number"
             id="transaction-amount"
             placeholder='Set your amount...'
@@ -100,7 +100,7 @@ const Upiform = () => {
 
         <button
           type="submit"
-          className='bg-[#3A81F1] mt-3 font-sans font-[500] text-white p-2 rounded flex justify-center items-center gap-x-2'
+          className='bg-[#3A81F1] mt-3 font-sans font-[500] text-white p-2 rounded-sm flex justify-center items-center gap-x-2'
           disabled={isSubmitting} // Disable the button when form is submitting
         >
           {isSubmitting ? 'Generating...' : 'Generate QR'}

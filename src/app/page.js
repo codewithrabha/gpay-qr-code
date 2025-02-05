@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="flex-grow">
+      <main className="grow">
         <div className="container h-auto sm:h-[100%] w-[100%] flex justify-center">
           <Upiform />
         </div>

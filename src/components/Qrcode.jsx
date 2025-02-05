@@ -34,7 +34,7 @@ const Qrcode = ({ name, upiId, gPayUrl, qrSource}) => {
   };
 
   return (
-    <div className='qr-code-wrapper bg-white flex gap-y-4 items-center flex-col border w-[350px] h-auto rounded shadow-sm pb-[15px]'>
+    <div className='qr-code-wrapper bg-white flex gap-y-4 items-center flex-col border w-[350px] h-auto rounded-sm shadow-xs pb-[15px]'>
 
       <h3 className='bg-slate-100 w-[100%] text-xl font-medium uppercase py-2 text-center font-sans'>{name ? name : 'Abhijit Rabha'}</h3>
       <img className='w-[255px]' src={qrSource ? qrSource : defaultQrSource} />
@@ -44,7 +44,7 @@ const Qrcode = ({ name, upiId, gPayUrl, qrSource}) => {
       </div>
 
       <div className='flex gap-3'>
-        <a href={gPayUrl ? gPayUrl : '#'} className='flex items-center gap-2 border rounded py-1 px-2 border-[#3A81F1] font-sans font-[600] text-[#3A81F1]'>
+        <a href={gPayUrl ? gPayUrl : '#'} className='flex items-center gap-2 border rounded-sm py-1 px-2 border-[#3A81F1] font-sans font-[600] text-[#3A81F1]'>
           <span>Pay with</span>
           <img className='w-[40px] pt-1' src='/images/googlepay.svg' alt="Google-Pay" />
         </a>
