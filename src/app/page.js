@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <Header />
       <main className="grow">
-        <div className="container h-auto sm:h-[100%] w-[100%] flex justify-center">
+        <div className="container sm:h-[100%] h-[100%] w-[100%] items-center flex justify-center">
           <Upiform />
         </div>
       </main>

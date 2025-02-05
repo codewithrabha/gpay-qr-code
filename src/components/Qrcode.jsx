@@ -49,7 +49,7 @@ const Qrcode = ({ name, upiId, gPayUrl, qrSource}) => {
           <img className='w-[40px] pt-1' src='/images/googlepay.svg' alt="Google-Pay" />
         </a>
 
-        <button id='download-qr' className='flex gap-x-2 justify-center items-center font-sans font-[600] text-[#3A81F1]' onClick={handleDownload}>
+        <button id='download-qr' className='flex gap-x-2 justify-center items-center font-sans font-[600] text-[#3A81F1] cursor-pointer' onClick={handleDownload}>
           Download
           <span className="material-symbols-outlined text-[#3A81F1]">download</span>
         </button>

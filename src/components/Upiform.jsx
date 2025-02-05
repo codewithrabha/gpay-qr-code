@@ -45,8 +45,8 @@ const Upiform = () => {
   const upiId = watch('receiverUpiId');
 
   return (
-    <div className='form-qr-wrapper flex flex-col-reverse sm:flex-row gap-y-5 w-[50%] items-center justify-between'>
-      <form onSubmit={handleSubmit(onSubmit)} className='p-5 w-[350px] bg-white rounded-sm flex flex-col gap-y-3 shadow-md'>
+    <div className='form-qr-wrapper flex flex-col-reverse sm:flex-row gap-y-5 sm:w-[50%] w-[100%] items-center justify-between'>
+      <form onSubmit={handleSubmit(onSubmit)} className=' hidden p-5 w-[350px] bg-white rounded-sm sm:flex flex-col gap-y-3 shadow-md'>
         <div className='input-block flex flex-col'>
           <label className='text-m mb-2' htmlFor="receiver-name">Your Name</label>
           <input
