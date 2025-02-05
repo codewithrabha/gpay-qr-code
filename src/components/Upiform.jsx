@@ -100,7 +100,7 @@ const Upiform = () => {
 
         <button
           type="submit"
-          className='bg-[#3A81F1] mt-3 font-sans font-[500] text-white p-2 rounded-sm flex justify-center items-center gap-x-2'
+          className='bg-[#3A81F1] mt-3 font-sans font-[500] text-white p-2 rounded-sm flex justify-center items-center gap-x-2 cursor-pointer'
           disabled={isSubmitting} // Disable the button when form is submitting
         >
           {isSubmitting ? 'Generating...' : 'Generate QR'}
