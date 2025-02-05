@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Qrcode = ({ name, upiId, qrSource }) => {
+const Qrcode = ({ name, upiId, gPayUrl, qrSource}) => {
 
   const defaultQrSource = '/images/donateQrcode.png';
   const imageSource = qrSource || defaultQrSource;
@@ -34,17 +34,27 @@ const Qrcode = ({ name, upiId, qrSource }) => {
   };
 
   return (
-    <div className='qr-code-wrapper bg-white flex gap-y-5 items-center flex-col border w-[350px] h-auto rounded shadow-sm pb-[10px]'>
+    <div className='qr-code-wrapper bg-white flex gap-y-4 items-center flex-col border w-[350px] h-auto rounded shadow-sm pb-[15px]'>
+
       <h3 className='bg-slate-100 w-[100%] text-xl font-medium uppercase py-2 text-center font-sans'>{name ? name : 'Abhijit Rabha'}</h3>
       <img className='w-[255px]' src={qrSource ? qrSource : defaultQrSource} />
+
       <div className='upi-id-wrapper flex '>
-        <img className='w-[40px]' src='/images/googlepay.svg' alt="Google-Pay" />
         <span className='text-gray-500 ml-2 font-semibold font-sans'>{upiId ? upiId : 'mr.abhijitrabha@oksbi'}</span>
       </div>
-      <button id='download-qr' className='flex gap-x-2 justify-center items-center font-sans font-[600] text-[#3A81F1]' onClick={handleDownload}>
-        Download
-        <span className="material-symbols-outlined text-[#3A81F1]">download</span>
-      </button>
+
+      <div className='flex gap-3'>
+        <a href={gPayUrl ? gPayUrl : '#'} className='flex items-center gap-2 border rounded py-1 px-2 border-[#3A81F1] font-sans font-[600] text-[#3A81F1]'>
+          <span>Pay with</span>
+          <img className='w-[40px] pt-1' src='/images/googlepay.svg' alt="Google-Pay" />
+        </a>
+
+        <button id='download-qr' className='flex gap-x-2 justify-center items-center font-sans font-[600] text-[#3A81F1]' onClick={handleDownload}>
+          Download
+          <span className="material-symbols-outlined text-[#3A81F1]">download</span>
+        </button>
+      </div>
+
     </div>
   )
 }

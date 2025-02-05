@@ -2,13 +2,16 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Qrcode from './Qrcode';
+import { ClientSegmentRoot } from 'next/dist/client/components/client-segment';
 
 const Upiform = () => {
   const { register, handleSubmit, watch, formState: { errors, isSubmitting } } = useForm();
   const [qrCodeUrl, setQrCodeUrl] = useState(null);
+  const [gPayUrl, setgPayUrl] = useState(null);
 
   const onSubmit = async (data) => {
     setQrCodeUrl(null); // Reset the QR code URL before generating a new one
+    setgPayUrl(null); // Reset the PayURL before generating a new one
 
     try {
       const response = await fetch('/api/qr', {
@@ -31,6 +34,8 @@ const Upiform = () => {
 
       const result = await response.json();
       setQrCodeUrl(result.apiUrl); // Store the QR code URL to display it
+      setgPayUrl(result.payUrl); // Store the Gpay URL to display it
+
     } catch (err) {
       console.error('Error generating QR code:', err.message);
     }
@@ -104,7 +109,7 @@ const Upiform = () => {
           </span>
         </button>
       </form>
-      <Qrcode name={name} upiId={upiId} qrSource={qrCodeUrl} />
+      <Qrcode name={name} upiId={upiId} qrSource={qrCodeUrl} gPayUrl={gPayUrl} />
     </div>
   );
 };

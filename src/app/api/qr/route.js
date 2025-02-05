@@ -16,6 +16,9 @@ export async function POST(req) {
     `upi://pay?pa=${pa}&pn=${pn}&am=${am}&cu=${cu}`
   )}`;
 
+  // Construct the PayUrl
+    let payUrl = `upi://pay?pa=${pa}&am=${am}&cu=${cu}`;
+
   // Return the QR code URL in the response
-  return NextResponse.json({ apiUrl }, { status: 200 });
+  return NextResponse.json({ apiUrl, payUrl }, { status: 200 });
 }

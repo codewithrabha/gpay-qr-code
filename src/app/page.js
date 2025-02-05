@@ -7,7 +7,6 @@ import 'material-symbols';
 
 export default function Home() {
 
-
   return (
     <>
       <Header />
