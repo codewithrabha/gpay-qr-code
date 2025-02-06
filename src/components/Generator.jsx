@@ -76,7 +76,7 @@ const Generator = () => {
       });
 
       setDialogOpen(false); // Close the dialog after a successful submission
-      
+
     } catch (err) {
       console.error('Error generating QR code:', err.message);
     }
@@ -92,13 +92,13 @@ const Generator = () => {
         <DialogTrigger asChild>
           <Button onClick={() => setDialogOpen(true)} variant="outline" className={'flex sm:hidden w-[350px] bg-[#3A81F1] text-white font-sans font-[500] p-2 rounded-sm justify-center items-center gap-x-2 cursor-pointer' }>Generate QR Code</Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-[425px] px-2 py-5">
           <DialogHeader>
             <DialogTitle>Generate GPay QR</DialogTitle>
             <DialogDescription>
               Fill in the neccessary inputs and press the Generate button.
             </DialogDescription>
-            <form onSubmit={handleSubmit(onSubmit)} className='flex sm:hidden p-5 w-[350px] bg-white rounded-sm flex-col gap-y-3 shadow-md'>
+            <form onSubmit={handleSubmit(onSubmit)} className='flex sm:hidden p-5 w-[100%] bg-white rounded-sm flex-col gap-y-3 shadow-md'>
               <div className='input-block flex flex-col'>
                 <label className='text-m text-left mb-2' htmlFor="receiver-name">Your Name</label>
                 <input

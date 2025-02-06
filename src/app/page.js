@@ -9,13 +9,11 @@ export default function Home() {
 
   return (
     <>
-      <Header />
       <main className="grow">
-        <div className="container sm:h-[100%] h-[100%] w-[100%] items-center flex justify-center">
+        <div className="container sm:h-[100%] h-[100vh] w-[100%] items-center flex justify-center">
           <Generator />
         </div>
       </main>
-      <Footer />
     </>
   );
 }
