@@ -44,7 +44,7 @@ const Qrcode = ({ name, upiId, gPayUrl, qrSource}) => {
       </div>
 
       <div className='flex gap-3'>
-        <a href={gPayUrl ? gPayUrl : '#'} className='flex items-center gap-2 border rounded-sm py-1 px-2 border-[#3A81F1] font-sans font-[600] text-[#3A81F1]'>
+        <a href={gPayUrl ? gPayUrl : 'upi://pay?pa=mr.abhijitrabha@oksbi&am=500&cu=INR'} className='flex items-center gap-2 border rounded-sm py-1 px-2 border-[#3A81F1] font-sans font-[600] text-[#3A81F1]'>
           <span>Pay with</span>
           <img className='w-[40px] pt-1' src='/images/googlepay.svg' alt="Google-Pay" />
         </a>
